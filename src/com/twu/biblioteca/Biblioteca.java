@@ -8,11 +8,10 @@ import java.lang.reflect.Array;
  */
 public class Biblioteca {
     private PrintStream printStream;
-    private Array[] bookList;
+    private Array[] bookList = new Array[2];
 
     public Biblioteca(PrintStream printStream) {
         this.printStream = printStream;
-        this.bookList = new Array[2];
     }
 
     public void startUserInterface() {
