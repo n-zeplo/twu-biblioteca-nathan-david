@@ -14,10 +14,12 @@ public class BibliotecaTest {
     @Test
     public void shouldWelcomeUserOnStartTest() {
         PrintStream printStream = mock(PrintStream.class);
-        Biblioteca biblioteca = new Biblioteca(printStream);
+        String welcomeMessage = "Welcome to Biblioteca";
+
+        Biblioteca biblioteca = new Biblioteca(printStream, welcomeMessage);
         biblioteca.startUserInterface();
 
-        verify(printStream).println("Welcome to Biblioteca");
+        verify(printStream).println(welcomeMessage);
 
     }
 }
