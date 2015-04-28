@@ -17,4 +17,11 @@ public class BookTest {
 
         assertThat(book.toString(), allOf(containsString("Title"), containsString("Author"), containsString("Year")));
     }
+
+    @Test
+    public void toStringShouldFormatOutputToUseColumns() {
+        Book book = new Book("Title", "Author", "Year");
+
+        assertEquals(book.toString(), "Title               |Author              |Year");
+    }
 }
