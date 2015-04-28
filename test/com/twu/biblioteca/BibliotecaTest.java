@@ -19,8 +19,7 @@ public class BibliotecaTest {
     private Biblioteca biblioteca;
 
     @Before
-    public void setUp() throws Exception {
-
+    public void setUp() {
         printStream = mock(PrintStream.class);
         biblioteca = new Biblioteca(printStream);
     }
@@ -38,6 +37,15 @@ public class BibliotecaTest {
     public void shouldPrintListOfBooksTest() {
         biblioteca.listBooks();
 
+        verify(printStream).println(contains("1."));
+        verify(printStream).println(contains("2."));
+    }
+
+    @Test
+    public void shouldPrintListOfBooksAfterWelcomeMessageTest() {
+        biblioteca.startUserInterface();
+
+        verify(printStream).println(contains("Welcome"));
         verify(printStream).println(contains("1."));
         verify(printStream).println(contains("2."));
     }
