@@ -14,12 +14,22 @@ public class BibliotecaTest {
     @Test
     public void shouldWelcomeUserOnStartTest() {
         PrintStream printStream = mock(PrintStream.class);
-        String welcomeMessage = "Welcome to Biblioteca";
 
-        Biblioteca biblioteca = new Biblioteca(printStream, welcomeMessage);
+        Biblioteca biblioteca = new Biblioteca(printStream);
         biblioteca.startUserInterface();
 
-        verify(printStream).println(welcomeMessage);
+        verify(printStream).println(contains("Welcome"));
 
     }
+
+//    @Test
+//    public void shouldPrintListOfBooksTest() {
+//        PrintStream printStream = mock(PrintStream.class);
+//
+//        Biblioteca biblioteca = new Biblioteca(printStream, "Welcome to Biblioteca");
+//        biblioteca.startUserInterface();
+//
+//        verify(biblioteca).listBooks();
+//
+//    }
 }
