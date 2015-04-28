@@ -30,24 +30,6 @@ public class BibliotecaTest {
         biblioteca.startUserInterface();
 
         verify(printStream).println(contains("Welcome"));
-
-    }
-
-    @Test
-    public void shouldPrintListOfBooksTest() {
-        biblioteca.listBooks();
-
-        verify(printStream).println(contains("1."));
-        verify(printStream).println(contains("2."));
-    }
-
-    @Test
-    public void shouldPrintListOfBooksAfterWelcomeMessageTest() {
-        biblioteca.startUserInterface();
-
-        verify(printStream).println(contains("Welcome"));
-        verify(printStream).println(contains("1."));
-        verify(printStream).println(contains("2."));
     }
 
     @Test
@@ -55,7 +37,13 @@ public class BibliotecaTest {
         biblioteca.listBooks();
 
         verify(printStream, times(biblioteca.getBookList().length)).println(anyString());
+    }
 
+    @Test
+    public void shouldPrintListOfBooksAfterWelcomeMessageTest() {
+        shouldWelcomeUserOnStartTest();
+
+        verify(printStream, times(biblioteca.getBookList().length + 1 )).println(anyString());
     }
 
 }

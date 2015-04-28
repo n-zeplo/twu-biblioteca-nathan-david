@@ -21,8 +21,6 @@ public class Biblioteca {
     }
 
     public void listBooks() {
-//        this.printStream.println("1.");
-//        this.printStream.println("2.");
         for (int i = 0; i < bookList.length; ++i) {
             this.printStream.println(i+1 + ". " + bookList[i]);
         }
