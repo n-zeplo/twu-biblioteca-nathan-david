@@ -50,4 +50,12 @@ public class BibliotecaTest {
         verify(printStream).println(contains("2."));
     }
 
+    @Test
+    public void shouldCallPrintLnForEachBook() {
+        biblioteca.listBooks();
+
+        verify(printStream, times(biblioteca.getBookList().length)).println(anyString());
+
+    }
+
 }
