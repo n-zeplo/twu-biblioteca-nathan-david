@@ -6,7 +6,8 @@ public class Main {
 
     public static void main(String[] args) {
         Biblioteca biblioteca = new Biblioteca(System.out, new ArrayList<Book>());
-        Application application = new Application(biblioteca);
+        Menu menu = new Menu();
+        Application application = new Application(biblioteca, menu);
 
         application.startUserInterface();
     }

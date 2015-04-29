@@ -5,12 +5,15 @@ package com.twu.biblioteca;
  */
 public class Application {
     private final Biblioteca biblioteca;
+    private final Menu menu;
 
-    public Application(Biblioteca biblioteca) {
+    public Application(Biblioteca biblioteca, Menu menu) {
         this.biblioteca = biblioteca;
+        this.menu = menu;
     }
 
     public void startUserInterface() {
         biblioteca.displayWelcomeMessage();
+        menu.displayOptions();
     }
 }

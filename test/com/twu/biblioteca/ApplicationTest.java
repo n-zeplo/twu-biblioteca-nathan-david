@@ -14,26 +14,27 @@ import static org.mockito.Mockito.verify;
  * Created by nzeplowi on 4/29/15.
  */
 public class ApplicationTest {
-    private PrintStream printStream;
+    private Application application;
     private Biblioteca biblioteca;
-    private ArrayList<Book> books;
-    private Book book1;
+    private Menu menu;
 
     @Before
     public void setUp() {
-        printStream = mock(PrintStream.class);
-        book1 = new Book("Title", "Author", "Year");
-        books = new ArrayList<Book>();
-        books.add(book1);
-        biblioteca = new Biblioteca(printStream, books);
+        biblioteca = mock(Biblioteca.class);
+        menu = mock(Menu.class);
+        application = new Application(biblioteca, menu);
     }
     @Test
-    public void shouldWelcomeUserOnStartTest() {
-        Biblioteca biblioteca = mock(Biblioteca.class);
-        Application application = new Application(biblioteca);
-
+    public void shouldWelcomeUserOnStart() {
         application.startUserInterface();
 
         verify(biblioteca).displayWelcomeMessage();
+    }
+
+    @Test
+    public void shouldDisplayMenuOnStart() {
+        application.startUserInterface();
+
+        verify(menu).displayOptions();
     }
 }
