@@ -2,16 +2,18 @@ package com.twu.biblioteca;
 
 import java.io.PrintStream;
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 /**
  * Created by nzeplowi on 4/28/15.
  */
 public class Biblioteca {
     private PrintStream printStream;
-    private Array[] bookList = new Array[2];
+    private ArrayList<Book> bookList;
 
-    public Biblioteca(PrintStream printStream) {
+    public Biblioteca(PrintStream printStream, ArrayList<Book> books) {
         this.printStream = printStream;
+        this.bookList = books;
     }
 
     public void startUserInterface() {
@@ -20,12 +22,12 @@ public class Biblioteca {
     }
 
     public void listBooks() {
-        for (int i = 0; i < bookList.length; ++i) {
-            this.printStream.println(i+1 + ". " + bookList[i]);
+        for (int i = 0; i < bookList.size(); ++i) {
+            this.printStream.println(i+1 + ". " + bookList.get(i).toString());
         }
     }
 
-    public Array[] getBookList() {
+    public ArrayList<Book> getBookList() {
         return bookList;
     }
 }

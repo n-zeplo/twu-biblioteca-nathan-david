@@ -4,8 +4,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.PrintStream;
+import java.util.ArrayList;
 
-import static org.hamcrest.CoreMatchers.both;
+import static org.hamcrest.CoreMatchers.allOf;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.mockito.Mockito.*;
 
@@ -21,7 +22,7 @@ public class BibliotecaTest {
     @Before
     public void setUp() {
         printStream = mock(PrintStream.class);
-        biblioteca = new Biblioteca(printStream);
+        biblioteca = new Biblioteca(printStream, new ArrayList<Book>());
     }
 
 
@@ -36,14 +37,26 @@ public class BibliotecaTest {
     public void shouldCallPrintLnForEachBook() {
         biblioteca.listBooks();
 
-        verify(printStream, times(biblioteca.getBookList().length)).println(anyString());
+        verify(printStream, times(biblioteca.getBookList().size())).println(anyString());
     }
 
     @Test
     public void shouldPrintListOfBooksAfterWelcomeMessageTest() {
         shouldWelcomeUserOnStartTest();
 
-        verify(printStream, times(biblioteca.getBookList().length + 1 )).println(anyString());
+        verify(printStream, times(biblioteca.getBookList().size() + 1 )).println(anyString());
+    }
+
+    @Test
+    public void shouldPrintBookObjectsFromListBooks(){
+        Book book1 = new Book("Title", "Author", "Year");
+        ArrayList<Book> books = new ArrayList<Book>();
+        books.add(book1);
+        Biblioteca biblioteca = new Biblioteca(printStream, books);
+
+        biblioteca.listBooks();
+
+        verify(printStream).println(contains(book1.toString()));
     }
 
 }
