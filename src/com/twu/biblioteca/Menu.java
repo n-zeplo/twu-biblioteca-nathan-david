@@ -29,7 +29,7 @@ public class Menu {
 
     private void checkUserInput(String userInput) {
         if (userInput.equals("List Books")){
-            biblioteca.listBooks();
+            printStream.println(biblioteca.listBooks());
         }
         else {
             displayInvalidInputMessage();

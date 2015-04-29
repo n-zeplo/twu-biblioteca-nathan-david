@@ -6,7 +6,7 @@ import java.util.Collection;
 public class Main {
 
     public static void main(String[] args) {
-        Biblioteca biblioteca = new Biblioteca(System.out, books());
+        Biblioteca biblioteca = new Biblioteca(books());
         Menu menu = new Menu(System.out, biblioteca, new UserInputStream());
         Application application = new Application(menu);
 
