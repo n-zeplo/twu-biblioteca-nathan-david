@@ -34,8 +34,10 @@ public class Menu {
         }
         else {
             printStream.println("Select a valid option!");
+            startMenu();
         }
     }
+
 
 
 }

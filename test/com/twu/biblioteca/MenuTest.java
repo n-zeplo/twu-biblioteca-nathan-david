@@ -55,11 +55,19 @@ public class MenuTest {
 
     @Test
     public void shouldDisplayMessageForInvalidUserInput(){
-        when(userInputStream.getUserInput()).thenReturn("Slimy");
+        when(userInputStream.getUserInput()).thenReturn("Slimy").thenReturn("List Books");
 
         menu.startMenu();
 
         verify(printStream).println(contains("Select a valid option!"));
+    }
 
+    @Test
+    public void shouldAllowUserToChooseAgainAfterInvalidInput() {
+        when(userInputStream.getUserInput()).thenReturn("Slimy").thenReturn("List Books");
+
+        menu.startMenu();
+
+        verify(printStream).println(contains("Select a valid option!\nListBooks"));
     }
 }
