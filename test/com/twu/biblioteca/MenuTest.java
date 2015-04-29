@@ -78,4 +78,13 @@ public class MenuTest {
 
         verify(printStream).println(contains("Quit"));
     }
+
+    @Test
+    public void shouldQuitWhenQuitOptionIsSelected() {
+        when(userInputStream.getUserInput()).thenReturn("Quit");
+
+        menu.startMenu();
+
+        verify(printStream).println(contains("Thank you"));
+    }
 }

@@ -44,6 +44,8 @@ public class Menu {
     private void checkUserInput(String userInput) {
         if (userInput.equals("List Books")){
             biblioteca.listBooks();
+        } else if (userInput.equals("Quit")) {
+            printStream.println("Thank you");
         } else {
             printStream.println("Select a valid option!");
         }

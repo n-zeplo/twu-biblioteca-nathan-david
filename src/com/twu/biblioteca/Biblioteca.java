@@ -19,7 +19,7 @@ public class Biblioteca {
     public void listBooks() {
         int counter = 1;
         for (Book book : bookList) {
-            this.printStream.println(counter +". " + book);
+            this.printStream.println(counter + ". " + book);
             counter++;
         }
     }
