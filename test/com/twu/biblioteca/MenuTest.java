@@ -37,6 +37,7 @@ public class MenuTest {
 
     @Test
     public void shouldStartMenuByDisplayingOptions() {
+        when(userInputStream.getUserInput()).thenReturn("");
         menu.startMenu();
 
         verify(printStream).println(contains("List Books"));
@@ -57,7 +58,7 @@ public class MenuTest {
 
         menu.startMenu();
 
-        verify(printStream).println(contains("1. List Books"));
+        verify(printStream).println(contains("1."));
     }
 
     @Test
