@@ -9,10 +9,12 @@ public class Menu {
 
     private final PrintStream printStream;
     private final Biblioteca biblioteca;
+    private UserInputStream userInputStream;
 
-    public Menu(PrintStream printStream, Biblioteca biblioteca) {
+    public Menu(PrintStream printStream, Biblioteca biblioteca, UserInputStream userInputStream) {
         this.printStream = printStream;
         this.biblioteca = biblioteca;
+        this.userInputStream = userInputStream;
     }
 
     public void displayWelcomeMessage() {
@@ -21,5 +23,15 @@ public class Menu {
 
     public void startMenu() {
         printStream.println("List Books");
+        String userInput = userInputStream.getUserInput();
+        checkUserInput(userInput);
     }
+
+    private void checkUserInput(String userInput) {
+        if (userInput == "List Books"){
+            biblioteca.listBooks();
+        }
+    }
+
+
 }
