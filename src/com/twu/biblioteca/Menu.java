@@ -28,16 +28,18 @@ public class Menu {
     }
 
     private void checkUserInput(String userInput) {
-
-        if (userInput != null && userInput.equals("List Books")){
+        if (userInput.equals("List Books")){
             biblioteca.listBooks();
         }
         else {
-            printStream.println("Select a valid option!");
+            displayInvalidInputMessage();
             startMenu();
         }
     }
 
+    private void displayInvalidInputMessage() {
+        printStream.println("Select a valid option!");
+    }
 
 
 }

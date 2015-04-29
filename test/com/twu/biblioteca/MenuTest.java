@@ -7,9 +7,7 @@ import java.io.PrintStream;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.mockito.Matchers.contains;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 /**
  * Created by nzeplowi on 4/29/15.
@@ -39,6 +37,8 @@ public class MenuTest {
 
     @Test
     public void shouldStartMenuByDisplayingOptions() {
+        when(userInputStream.getUserInput()).thenReturn("List Books");
+
         menu.startMenu();
 
         verify(printStream).println(contains("List Books"));
@@ -64,10 +64,11 @@ public class MenuTest {
 
     @Test
     public void shouldAllowUserToChooseAgainAfterInvalidInput() {
-        when(userInputStream.getUserInput()).thenReturn("Slimy").thenReturn("List Books");
+        when(userInputStream.getUserInput()).thenReturn("Slimy", "List Books");
 
         menu.startMenu();
 
-        verify(printStream).println(contains("Select a valid option!\nListBooks"));
+        verify(printStream, atLeast(2)).println(contains("List Books"));
     }
+
 }
