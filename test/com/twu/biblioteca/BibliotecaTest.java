@@ -30,26 +30,11 @@ public class BibliotecaTest {
         biblioteca = new Biblioteca(printStream, books);
     }
 
-
-    @Test
-    public void shouldWelcomeUserOnStartTest() {
-        biblioteca.displayWelcomeMessage();
-
-        verify(printStream).println(contains("Welcome"));
-    }
-
     @Test
     public void shouldCallPrintLnForEachBook() {
         biblioteca.listBooks();
 
         verify(printStream, times(biblioteca.getBookList().size())).println(anyString());
-    }
-
-    @Test
-    public void shouldPrintListOfBooksAfterWelcomeMessageTest() {
-        shouldWelcomeUserOnStartTest();
-
-        verify(printStream, times(biblioteca.getBookList().size() + 1 )).println(anyString());
     }
 
     @Test

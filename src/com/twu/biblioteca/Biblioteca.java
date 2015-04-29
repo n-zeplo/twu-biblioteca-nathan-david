@@ -16,14 +16,11 @@ public class Biblioteca {
         this.bookList = books;
     }
 
-    public void displayWelcomeMessage() {
-        this.printStream.println("Welcome to Biblioteca!");
-        this.listBooks();
-    }
-
     public void listBooks() {
-        for (int i = 0; i < bookList.size(); ++i) {
-            this.printStream.println(i+1 + ". " + bookList.get(i));
+        int counter = 1;
+        for (Book book : bookList) {
+            this.printStream.println(counter +". " + book);
+            counter++;
         }
     }
 
