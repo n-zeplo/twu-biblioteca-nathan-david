@@ -23,7 +23,7 @@ public class Biblioteca {
 
     public void listBooks() {
         for (int i = 0; i < bookList.size(); ++i) {
-            this.printStream.println(i+1 + ". " + bookList.get(i).toString());
+            this.printStream.println(i+1 + ". " + bookList.get(i));
         }
     }
 
