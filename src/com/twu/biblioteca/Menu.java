@@ -24,12 +24,16 @@ public class Menu {
     public void startMenu() {
         printStream.println("List Books");
         String userInput = userInputStream.getUserInput();
+        System.out.println(userInput);
         checkUserInput(userInput);
     }
 
     private void checkUserInput(String userInput) {
-        if (userInput == "List Books"){
+        if (userInput.equals("List Books")){
             biblioteca.listBooks();
+        }
+        else {
+            printStream.println("Select a valid option!");
         }
     }
 

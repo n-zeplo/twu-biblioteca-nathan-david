@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.io.PrintStream;
 
+import static org.hamcrest.CoreMatchers.is;
 import static org.mockito.Matchers.contains;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
@@ -28,6 +29,7 @@ public class MenuTest {
         userInputStream = mock(UserInputStream.class);
         menu = new Menu(printStream, biblioteca, userInputStream);
     }
+
     @Test
     public void shouldWelcomeUserOnStartTest() {
         menu.displayWelcomeMessage();
@@ -49,5 +51,15 @@ public class MenuTest {
         menu.startMenu();
 
         verify(biblioteca).listBooks();
+    }
+
+    @Test
+    public void shouldDisplayMessageForInvalidUserInput(){
+        when(userInputStream.getUserInput()).thenReturn("Slimy");
+
+        menu.startMenu();
+
+        verify(printStream).println(contains("Select a valid option!"));
+
     }
 }
