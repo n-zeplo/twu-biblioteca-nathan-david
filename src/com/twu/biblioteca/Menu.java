@@ -22,13 +22,17 @@ public class Menu {
     }
 
     public void startMenu() {
-        printStream.println("List Books");
+        displayMenu();
         String userInput = userInputStream.getUserInput();
         checkUserInput(userInput);
     }
 
+    private void displayMenu() {
+        printStream.println("1. List Books");
+    }
+
     private void checkUserInput(String userInput) {
-        if (userInput == "List Books"){
+        if (userInput.equals("List Books")){
             biblioteca.listBooks();
         }
     }

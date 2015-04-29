@@ -50,4 +50,13 @@ public class MenuTest {
 
         verify(biblioteca).listBooks();
     }
+
+    @Test
+    public void shouldContainAnOrderedListOfOptions() {
+        when(userInputStream.getUserInput()).thenReturn("");
+
+        menu.startMenu();
+
+        verify(printStream).println(contains("1. List Books"));
+    }
 }
