@@ -59,4 +59,13 @@ public class MenuTest {
 
         verify(printStream).println(contains("1. List Books"));
     }
+
+    @Test
+    public void shouldWarnUserWhenProvidedInvalidOption() {
+        when(userInputStream.getUserInput()).thenReturn("Invalid Input!!");
+
+        menu.startMenu();
+
+        verify(printStream).println(contains("Select a valid option!"));
+    }
 }
