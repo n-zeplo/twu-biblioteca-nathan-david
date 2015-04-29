@@ -33,7 +33,7 @@ public class BibliotecaTest {
 
     @Test
     public void shouldWelcomeUserOnStartTest() {
-        biblioteca.startUserInterface();
+        biblioteca.displayWelcomeMessage();
 
         verify(printStream).println(contains("Welcome"));
     }

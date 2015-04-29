@@ -16,7 +16,7 @@ public class Biblioteca {
         this.bookList = books;
     }
 
-    public void startUserInterface() {
+    public void displayWelcomeMessage() {
         this.printStream.println("Welcome to Biblioteca!");
         this.listBooks();
     }
