@@ -30,7 +30,11 @@ public class Menu {
     public void startMenu() {
         displayMenu();
         String userInput = userInputStream.getUserInput();
-        checkUserInput(userInput);
+        while (!userInput.equals("Quit")) {
+            checkUserInput(userInput);
+            userInput = userInputStream.getUserInput();
+        }
+        printStream.println("Thank you");
     }
 
     private void displayMenu() {
@@ -44,8 +48,6 @@ public class Menu {
     private void checkUserInput(String userInput) {
         if (userInput.equals("List Books")){
             biblioteca.listBooks();
-        } else if (userInput.equals("Quit")) {
-            printStream.println("Thank you");
         } else {
             printStream.println("Select a valid option!");
         }

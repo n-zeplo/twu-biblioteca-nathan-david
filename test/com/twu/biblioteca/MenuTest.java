@@ -37,7 +37,7 @@ public class MenuTest {
 
     @Test
     public void shouldStartMenuByDisplayingOptions() {
-        when(userInputStream.getUserInput()).thenReturn("");
+        when(userInputStream.getUserInput()).thenReturn("Quit");
         menu.startMenu();
 
         verify(printStream).println(contains("List Books"));
@@ -45,7 +45,7 @@ public class MenuTest {
 
     @Test
     public void shouldCallListBooksWhenListBooksOptionIsCalled() {
-        when(userInputStream.getUserInput()).thenReturn("List Books");
+        when(userInputStream.getUserInput()).thenReturn("List Books", "Quit");
 
         menu.startMenu();
 
@@ -54,7 +54,7 @@ public class MenuTest {
 
     @Test
     public void shouldContainAnOrderedListOfOptions() {
-        when(userInputStream.getUserInput()).thenReturn("");
+        when(userInputStream.getUserInput()).thenReturn("Quit");
 
         menu.startMenu();
 
@@ -63,7 +63,7 @@ public class MenuTest {
 
     @Test
     public void shouldWarnUserWhenProvidedInvalidOption() {
-        when(userInputStream.getUserInput()).thenReturn("Invalid Input!!");
+        when(userInputStream.getUserInput()).thenReturn("Invalid Input!!", "Quit");
 
         menu.startMenu();
 
@@ -72,7 +72,7 @@ public class MenuTest {
 
     @Test
     public void shouldHaveQuitAsAnOption() {
-        when(userInputStream.getUserInput()).thenReturn("");
+        when(userInputStream.getUserInput()).thenReturn("Quit");
 
         menu.startMenu();
 
@@ -85,6 +85,17 @@ public class MenuTest {
 
         menu.startMenu();
 
+        verify(printStream).println(contains("Thank you"));
+    }
+
+    @Test
+    public void shouldContinueRunningUntilUserQuits() {
+        when(userInputStream.getUserInput()).thenReturn("List Books", "Quit");
+
+        menu.startMenu();
+
+
+        verify(printStream).println(contains("List Books"));
         verify(printStream).println(contains("Thank you"));
     }
 }

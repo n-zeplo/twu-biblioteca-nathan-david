@@ -31,10 +31,10 @@ public class BibliotecaTest {
     }
 
     @Test
-    public void shouldCallPrintLnForEachBook() {
+    public void shouldPrintEachBook() {
         biblioteca.listBooks();
 
-        verify(printStream, times(biblioteca.getBookList().size())).println(anyString());
+        verify(printStream, times(books.size())).println(anyString());
     }
 
     @Test

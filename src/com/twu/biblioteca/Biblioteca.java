@@ -23,9 +23,5 @@ public class Biblioteca {
             counter++;
         }
     }
-
-    public ArrayList<Book> getBookList() {
-        return bookList;
-    }
 }
 
