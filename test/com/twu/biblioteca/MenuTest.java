@@ -68,4 +68,13 @@ public class MenuTest {
 
         verify(printStream).println(contains("Select a valid option!"));
     }
+
+    @Test
+    public void shouldHaveQuitAsAnOption() {
+        when(userInputStream.getUserInput()).thenReturn("");
+
+        menu.startMenu();
+
+        verify(printStream).println(contains("Quit"));
+    }
 }
