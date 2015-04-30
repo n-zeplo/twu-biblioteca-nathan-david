@@ -9,12 +9,12 @@ public class Menu {
 
     private final PrintStream printStream;
     private final Biblioteca biblioteca;
-    private UserInputStream userInputStream;
+    private Option option;
 
-    public Menu(PrintStream printStream, Biblioteca biblioteca, UserInputStream userInputStream) {
+    public Menu(PrintStream printStream, Biblioteca biblioteca, Option option) {
         this.printStream = printStream;
         this.biblioteca = biblioteca;
-        this.userInputStream = userInputStream;
+        this.option = option;
     }
 
     public void displayWelcomeMessage() {
@@ -22,22 +22,26 @@ public class Menu {
     }
 
     public void chooseOptions() {
-        displayOptions();
-        String userInput = userInputStream.getUserInput();
-        checkUserInput(userInput);
+        String userInput = "Run";
+        while(!userInput.equals("Quit")) {
+            displayOptions();
+            userInput = option.returnUserOption();
+            checkUserInput(userInput);
+        }
     }
 
     private void displayOptions() {
-        printStream.println("List Books");
+        printStream.println("Options:\nList Books");
     }
 
     private void checkUserInput(String userInput) {
         if (userInput.equals("List Books")){
            printStream.println(biblioteca.listBooks());
+        } else if(userInput.equals("Quit")) {
+            return;
         }
         else {
             printStream.println("Select a valid option!");
-            chooseOptions();
         }
     }
 }

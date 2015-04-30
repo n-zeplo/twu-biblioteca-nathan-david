@@ -7,8 +7,9 @@ import java.io.InputStreamReader;
 /**
  * Created by nzeplowi on 4/29/15.
  */
-public class UserInputStream {
-    public String getUserInput() {
+public class Option {
+
+    public String returnUserOption() {
         String inputLine = null;
         try {
             BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
@@ -19,4 +20,6 @@ public class UserInputStream {
         }
         return inputLine;
     }
+
+
 }

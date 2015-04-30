@@ -17,7 +17,7 @@ public class Biblioteca {
         String formattedBookList = "";
 
         for (Book book : bookList) {
-            formattedBookList += counter +". " + book;
+            formattedBookList += counter +". " + book + "\n";
             counter++;
         }
         return formattedBookList;
