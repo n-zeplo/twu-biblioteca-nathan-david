@@ -9,7 +9,7 @@ public class Main {
         Menu menu = new Menu(System.out, biblioteca, new UserInputStream());
         Application application = new Application(menu);
 
-        application.startUserInterface();
+        application.start();
     }
 
     private static ArrayList<Book> books() {

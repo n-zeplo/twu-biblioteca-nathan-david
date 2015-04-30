@@ -20,14 +20,14 @@ public class ApplicationTest {
     }
     @Test
     public void shouldWelcomeUserOnStart() {
-        application.startUserInterface();
+        application.start();
 
         verify(menu).displayWelcomeMessage();
     }
 
     @Test
     public void shouldDisplayMenuOnStart() {
-        application.startUserInterface();
+        application.start();
 
         verify(menu).startMenu();
     }

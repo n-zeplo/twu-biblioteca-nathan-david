@@ -10,7 +10,7 @@ public class Application {
         this.menu = menu;
     }
 
-    public void startUserInterface() {
+    public void start() {
         menu.displayWelcomeMessage();
         menu.startMenu();
     }
