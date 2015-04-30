@@ -2,13 +2,14 @@ package com.twu.biblioteca;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Matchers;
+
 
 import java.io.PrintStream;
 
+import static org.hamcrest.CoreMatchers.endsWith;
 import static org.mockito.Matchers.contains;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 /**
  * Created by nzeplowi on 4/29/15.
@@ -19,15 +20,16 @@ public class MenuTest {
     private PrintStream printStream;
     private Biblioteca biblioteca;
     private Menu menu;
-    private UserInputStream userInputStream;
+    private Option option;
 
     @Before
     public void setUp() {
         printStream = mock(PrintStream.class);
         biblioteca = mock(Biblioteca.class);
-        userInputStream = mock(UserInputStream.class);
-        menu = new Menu(printStream, biblioteca, userInputStream);
+        option = mock(Option.class);
+        menu = new Menu(printStream, biblioteca, option);
     }
+
     @Test
     public void shouldWelcomeUserOnStartTest() {
         menu.displayWelcomeMessage();
@@ -37,17 +39,38 @@ public class MenuTest {
 
     @Test
     public void shouldStartMenuByDisplayingOptions() {
-        menu.startMenu();
+        when(option.returnUserOption()).thenReturn("List Books", "Quit");
 
-        verify(printStream).println(contains("List Books"));
+        menu.chooseOptions();
+
+        verify(printStream, atLeastOnce()).println(Matchers.startsWith("Options:"));
     }
 
     @Test
     public void shouldCallListBooksWhenListBooksOptionIsCalled() {
-        when(userInputStream.getUserInput()).thenReturn("List Books");
+        when(option.returnUserOption()).thenReturn("List Books", "Quit");
 
-        menu.startMenu();
+        menu.chooseOptions();
 
         verify(biblioteca).listBooks();
     }
+
+    @Test
+    public void shouldDisplayMessageForInvalidUserInput(){
+        when(option.returnUserOption()).thenReturn("Slimy", "List Books", "Quit");
+
+        menu.chooseOptions();
+
+        verify(printStream).println(contains("Select a valid option!"));
+    }
+
+    @Test
+    public void shouldAllowUserToChooseAgainAfterInvalidInput() {
+        when(option.returnUserOption()).thenReturn("Slimy", "List Books","Quit");
+
+        menu.chooseOptions();
+
+        verify(printStream, atLeast(2)).println(contains("List Books"));
+    }
+
 }

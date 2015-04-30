@@ -20,15 +20,15 @@ public class ApplicationTest {
     }
     @Test
     public void shouldWelcomeUserOnStart() {
-        application.startUserInterface();
+        application.run();
 
         verify(menu).displayWelcomeMessage();
     }
 
     @Test
     public void shouldDisplayMenuOnStart() {
-        application.startUserInterface();
+        application.run();
 
-        verify(menu).startMenu();
+        verify(menu).chooseOptions();
     }
 }

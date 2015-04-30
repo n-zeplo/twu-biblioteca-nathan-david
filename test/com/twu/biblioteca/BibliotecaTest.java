@@ -3,12 +3,12 @@ package com.twu.biblioteca;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Collection;
 
 import static org.hamcrest.CoreMatchers.allOf;
 import static org.hamcrest.CoreMatchers.containsString;
-import static org.mockito.Mockito.*;
+import static org.junit.Assert.assertThat;
 
 
 /**
@@ -16,32 +16,26 @@ import static org.mockito.Mockito.*;
  */
 public class BibliotecaTest {
 
-    private PrintStream printStream;
     private Biblioteca biblioteca;
-    private ArrayList<Book> books;
-    private Book book1;
+    private Collection<Book> books;
+
 
     @Before
     public void setUp() {
-        printStream = mock(PrintStream.class);
-        book1 = new Book("Title", "Author", "Year");
         books = new ArrayList<Book>();
+        biblioteca = new Biblioteca(books);
+    }
+
+
+    @Test
+    public void shouldDisplayAllBookInformation(){
+        Book book1 = new Book("Title", "Author", "Year");
         books.add(book1);
-        biblioteca = new Biblioteca(printStream, books);
-    }
+        Book book2 = new Book("Title2", "Author2", "Year2");
+        books.add(book2);
 
-    @Test
-    public void shouldCallPrintLnForEachBook() {
-        biblioteca.listBooks();
+        assertThat(biblioteca.listBooks(), allOf(containsString(book1.toString()),containsString("\n"), containsString(book2.toString())));
 
-        verify(printStream, times(biblioteca.getBookList().size())).println(anyString());
-    }
-
-    @Test
-    public void shouldPrintBookObjectsFromListBooks(){
-        biblioteca.listBooks();
-
-        verify(printStream).println(contains(book1.toString()));
     }
 
 }

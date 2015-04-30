@@ -1,31 +1,26 @@
 package com.twu.biblioteca;
 
-import java.io.PrintStream;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * Created by nzeplowi on 4/28/15.
  */
 public class Biblioteca {
-    private PrintStream printStream;
-    private ArrayList<Book> bookList;
+    private Collection<Book> bookList;
 
-    public Biblioteca(PrintStream printStream, ArrayList<Book> books) {
-        this.printStream = printStream;
+    public Biblioteca(Collection<Book> books) {
         this.bookList = books;
     }
 
-    public void listBooks() {
+    public String listBooks() {
         int counter = 1;
+        String formattedBookList = "";
+
         for (Book book : bookList) {
-            this.printStream.println(counter +". " + book);
+            formattedBookList += counter +". " + book + "\n";
             counter++;
         }
-    }
-
-    public ArrayList<Book> getBookList() {
-        return bookList;
+        return formattedBookList;
     }
 }
 
