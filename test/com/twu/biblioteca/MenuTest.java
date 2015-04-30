@@ -1,6 +1,7 @@
 package com.twu.biblioteca;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.PrintStream;
@@ -97,5 +98,15 @@ public class MenuTest {
 
         verify(printStream).println(contains("List Books"));
         verify(printStream).println(contains("Thank you"));
+    }
+
+    @Test
+    @Ignore
+    public void shouldPromptUserForInput() {
+        when(userInputStream.getUserInput()).thenReturn("Quit");
+
+        menu.startMenu();
+
+        verify(printStream).println("Select option: ");
     }
 }
