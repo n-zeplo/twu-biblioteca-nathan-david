@@ -25,9 +25,5 @@ public class Biblioteca {
         }
         return formattedBookList;
     }
-
-    public Collection<Book> getBookList() {
-        return bookList;
-    }
 }
 
