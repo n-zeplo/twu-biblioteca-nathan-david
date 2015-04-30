@@ -39,7 +39,7 @@ public class MenuTest {
     public void shouldStartMenuByDisplayingOptions() {
         when(userInputStream.getUserInput()).thenReturn("List Books");
 
-        menu.startMenu();
+        menu.chooseOptions();
 
         verify(printStream).println(contains("List Books"));
     }
@@ -48,7 +48,7 @@ public class MenuTest {
     public void shouldCallListBooksWhenListBooksOptionIsCalled() {
         when(userInputStream.getUserInput()).thenReturn("List Books");
 
-        menu.startMenu();
+        menu.chooseOptions();
 
         verify(biblioteca).listBooks();
     }
@@ -57,7 +57,7 @@ public class MenuTest {
     public void shouldDisplayMessageForInvalidUserInput(){
         when(userInputStream.getUserInput()).thenReturn("Slimy").thenReturn("List Books");
 
-        menu.startMenu();
+        menu.chooseOptions();
 
         verify(printStream).println(contains("Select a valid option!"));
     }
@@ -66,7 +66,7 @@ public class MenuTest {
     public void shouldAllowUserToChooseAgainAfterInvalidInput() {
         when(userInputStream.getUserInput()).thenReturn("Slimy", "List Books");
 
-        menu.startMenu();
+        menu.chooseOptions();
 
         verify(printStream, atLeast(2)).println(contains("List Books"));
     }

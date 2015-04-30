@@ -3,8 +3,9 @@ package com.twu.biblioteca;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
+import java.util.regex.*;
+
 
 /**
  * Created by nzeplowi on 4/28/15.
@@ -13,15 +14,16 @@ public class BookTest {
 
     @Test
     public void toStringShouldPrintTitleAuthorAndYearPublished() {
-        Book book = new Book("Title", "Author", "Year");
+        Book book = new Book("Title", "Author", "1234");
 
-        assertThat(book.toString(), allOf(containsString("Title"), containsString("Author"), containsString("Year")));
+        assertThat(book.toString(), allOf(containsString("Title"), containsString("Author"), containsString("1234")));
     }
 
     @Test
     public void toStringShouldFormatOutputToUseColumns() {
-        Book book = new Book("Title", "Author", "Year");
+        Book book = new Book("Title", "Author", "1234");
 
-        assertEquals(book.toString(), "Title               |Author              |Year");
+        assertEquals(true, book.toString().matches("\\w+\\s*\\|\\w+\\s*\\|\\d{4}"));
     }
+
 }

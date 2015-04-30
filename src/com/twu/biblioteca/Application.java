@@ -12,6 +12,6 @@ public class Application {
 
     public void run() {
         menu.displayWelcomeMessage();
-        menu.startMenu();
+        menu.chooseOptions();
     }
 }

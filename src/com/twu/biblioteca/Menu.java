@@ -18,28 +18,26 @@ public class Menu {
     }
 
     public void displayWelcomeMessage() {
-        this.printStream.println("Welcome to Biblioteca!");
+        printStream.println("Welcome to Biblioteca!");
     }
 
-    public void startMenu() {
-        printStream.println("List Books");
+    public void chooseOptions() {
+        displayOptions();
         String userInput = userInputStream.getUserInput();
         checkUserInput(userInput);
     }
 
+    private void displayOptions() {
+        printStream.println("List Books");
+    }
+
     private void checkUserInput(String userInput) {
         if (userInput.equals("List Books")){
-            printStream.println(biblioteca.listBooks());
+           printStream.println(biblioteca.listBooks());
         }
         else {
-            displayInvalidInputMessage();
-            startMenu();
+            printStream.println("Select a valid option!");
+            chooseOptions();
         }
     }
-
-    private void displayInvalidInputMessage() {
-        printStream.println("Select a valid option!");
-    }
-
-
 }

@@ -29,6 +29,6 @@ public class ApplicationTest {
     public void shouldDisplayMenuOnStart() {
         application.run();
 
-        verify(menu).startMenu();
+        verify(menu).chooseOptions();
     }
 }
