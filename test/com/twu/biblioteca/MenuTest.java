@@ -73,12 +73,4 @@ public class MenuTest {
         verify(printStream, atLeast(2)).println(contains("List Books"));
     }
 
-    @Test
-    public void shouldQuitProgramWhenInputIsQuit() {
-        when(option.returnUserOption()).thenReturn("Quit");
-
-        menu.chooseOptions();
-
-        verify(printStream).println(Matchers.endsWith("List Books"));
-    }
 }
