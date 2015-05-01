@@ -5,11 +5,11 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.PrintStream;
+import java.util.HashMap;
+import java.util.Map;
 
 import static org.mockito.Matchers.contains;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 /**
  * Created by nzeplowi on 4/29/15.
@@ -21,43 +21,66 @@ public class MenuTest {
     private Biblioteca biblioteca;
     private Menu menu;
     private UserInputStream userInputStream;
+    private Map<String,Command> mapMenu;
+    private Command commandMock;
 
     @Before
     public void setUp() {
         printStream = mock(PrintStream.class);
         biblioteca = mock(Biblioteca.class);
         userInputStream = mock(UserInputStream.class);
-        menu = new Menu(printStream, biblioteca, userInputStream);
+        mapMenu = initializeMapMenu();
+        menu = new Menu(printStream, biblioteca, userInputStream, mapMenu);
     }
+
+    private Map<String, Command> initializeMapMenu() {
+        Map<String, Command> mapMenuCommand = new HashMap<String, Command>();
+        commandMock = mock(Command.class);
+        mapMenuCommand.put("Command", commandMock);
+
+        return mapMenuCommand;
+    }
+
     @Test
     public void shouldWelcomeUserOnStartTest() {
-        menu.displayWelcomeMessage();
+        when(userInputStream.getUserInput()).thenReturn("Quit");
+
+        menu.start();
 
         verify(printStream).println(contains("Welcome"));
     }
 
     @Test
-    public void shouldStartMenuByDisplayingOptions() {
+    public void shouldStartMenuByDisplayingAllPossibleOptionsUsingCommandMapKeys() {
         when(userInputStream.getUserInput()).thenReturn("Quit");
-        menu.startMenu();
+        menu.start();
 
-        verify(printStream).println(contains("List Books"));
+        verify(printStream).println(contains("Command"));
     }
 
     @Test
-    public void shouldCallListBooksWhenListBooksOptionIsCalled() {
-        when(userInputStream.getUserInput()).thenReturn("List Books", "Quit");
+    public void shouldExecuteACommandWithValidInput() {
+        when(userInputStream.getUserInput()).thenReturn("Command", "Quit");
 
-        menu.startMenu();
+        menu.start();
 
-        verify(biblioteca).listBooks();
+        verify(commandMock).execute();
+    }
+
+    @Test
+    public void shouldNotExecuteACommandWithInValidInput() {
+        when(userInputStream.getUserInput()).thenReturn("Foo", "Quit");
+
+        menu.start();
+
+        verify(commandMock, never()).execute();
     }
 
     @Test
     public void shouldContainAnOrderedListOfOptions() {
         when(userInputStream.getUserInput()).thenReturn("Quit");
 
-        menu.startMenu();
+        menu.start();
 
         verify(printStream).println(contains("1."));
     }
@@ -66,7 +89,7 @@ public class MenuTest {
     public void shouldWarnUserWhenProvidedInvalidOption() {
         when(userInputStream.getUserInput()).thenReturn("Invalid Input!!", "Quit");
 
-        menu.startMenu();
+        menu.start();
 
         verify(printStream).println(contains("Select a valid option!"));
     }
@@ -75,7 +98,7 @@ public class MenuTest {
     public void shouldHaveQuitAsAnOption() {
         when(userInputStream.getUserInput()).thenReturn("Quit");
 
-        menu.startMenu();
+        menu.start();
 
         verify(printStream).println(contains("Quit"));
     }
@@ -84,29 +107,18 @@ public class MenuTest {
     public void shouldQuitWhenQuitOptionIsSelected() {
         when(userInputStream.getUserInput()).thenReturn("Quit");
 
-        menu.startMenu();
+        menu.start();
 
         verify(printStream).println(contains("Thank you"));
     }
 
     @Test
     public void shouldContinueRunningUntilUserQuits() {
-        when(userInputStream.getUserInput()).thenReturn("List Books", "Quit");
+        when(userInputStream.getUserInput()).thenReturn("Command", "Quit");
+        when(biblioteca.isRunning()).thenReturn(true, false);
+        menu.start();
 
-        menu.startMenu();
-
-
-        verify(printStream).println(contains("List Books"));
-        verify(printStream).println(contains("Thank you"));
+        verify(commandMock).execute();
     }
 
-    @Test
-    @Ignore
-    public void shouldPromptUserForInput() {
-        when(userInputStream.getUserInput()).thenReturn("Quit");
-
-        menu.startMenu();
-
-        verify(printStream).println("Select option: ");
-    }
 }

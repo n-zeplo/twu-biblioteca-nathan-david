@@ -3,15 +3,15 @@ package com.twu.biblioteca;
 /**
  * Created by kprakobk on 4/30/15.
  */
-public class ListBooksCommand implements Command {
+public class QuitBibliotecaCommand implements Command {
     private Biblioteca biblioteca;
 
-    public ListBooksCommand(Biblioteca biblioteca) {
+    public QuitBibliotecaCommand(Biblioteca biblioteca) {
         this.biblioteca = biblioteca;
     }
 
     @Override
     public void execute() {
-        biblioteca.listBooks();
+        biblioteca.setRunning(false);
     }
 }

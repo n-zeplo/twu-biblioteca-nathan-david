@@ -1,15 +1,23 @@
 package com.twu.biblioteca;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Main {
 
     public static void main(String[] args) {
         Biblioteca biblioteca = new Biblioteca(System.out, books());
-        Menu menu = new Menu(System.out, biblioteca, new UserInputStream());
-        Application application = new Application(menu);
+        Menu menu = new Menu(System.out, biblioteca, new UserInputStream(), initializeMapMenu(biblioteca));
 
-        application.start();
+        menu.start();
+    }
+
+    private static Map<String, Command> initializeMapMenu(Biblioteca biblioteca) {
+        Map<String, Command> mapMenuCommand = new HashMap<String, Command>();
+        mapMenuCommand.put("List Books", new ListBooksCommand(biblioteca));
+
+        return mapMenuCommand;
     }
 
     private static ArrayList<Book> books() {

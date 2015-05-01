@@ -1,9 +1,6 @@
 package com.twu.biblioteca;
 
 import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -13,54 +10,52 @@ public class Menu {
 
     private final PrintStream printStream;
     private final Biblioteca biblioteca;
+    private  boolean running;
     private UserInputStream userInputStream;
-    private List<String> options;
-    private Map<String, MenuCommand> mapMenuCommand = new HashMap<String, MenuCommand>();
+    private Map<String, Command> mapMenuCommand;
 
-
-    public Menu(PrintStream printStream, Biblioteca biblioteca, UserInputStream userInputStream) {
+    public Menu(PrintStream printStream, Biblioteca biblioteca, UserInputStream userInputStream, Map<String, Command> mapMenuCommand) {
         this.printStream = printStream;
         this.biblioteca = biblioteca;
         this.userInputStream = userInputStream;
-        options = new ArrayList<String>();
-        options.add("List Books");
-        options.add("Quit");
-        mapMenuCommand.put("List Books", new ListBooksCommand(this.biblioteca));
-
+        this.mapMenuCommand = mapMenuCommand;
+        this.running = true;
     }
 
-    public void displayWelcomeMessage() {
+    private void displayWelcomeMessage() {
         this.printStream.println("Welcome to Biblioteca!");
     }
 
-    public void startMenu() {
+    public void start() {
+        displayWelcomeMessage();
         displayMenu();
-        String userInput = userInputStream.getUserInput();
-        while (!userInput.equals("Quit")) {
+
+        while (running) {
+            String userInput = userInputStream.getUserInput();
             checkUserInput(userInput);
-            userInput = userInputStream.getUserInput();
         }
         printStream.println("Thank you");
     }
 
     private void displayMenu() {
         int counter = 1;
-        for (String option : options) {
+        for (String option : mapMenuCommand.keySet()) {
             printStream.println(counter + ". " + option);
             counter++;
         }
+        printStream.println(counter + ". Quit\n" );
     }
 
     private void checkUserInput(String userInput) {
 
         if (mapMenuCommand.containsKey(userInput)){
             mapMenuCommand.get(userInput).execute();
-        } else {
-            printStream.println("Select a valid option!");
+        }
+        else if(userInput.equals("Quit")) {
+            running = false;
+        }
+        else{
+                printStream.println("Select a valid option!");
         }
     }
-
-
-
-
 }
