@@ -1,7 +1,7 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.commands.Command;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.PrintStream;
@@ -115,7 +115,7 @@ public class MenuTest {
     @Test
     public void shouldContinueRunningUntilUserQuits() {
         when(userInputStream.getUserInput()).thenReturn("Command", "Quit");
-        when(biblioteca.isRunning()).thenReturn(true, false);
+
         menu.start();
 
         verify(commandMock).execute();

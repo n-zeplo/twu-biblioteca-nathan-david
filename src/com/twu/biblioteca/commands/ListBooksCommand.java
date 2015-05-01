@@ -1,4 +1,7 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.commands;
+
+import com.twu.biblioteca.Biblioteca;
+import com.twu.biblioteca.commands.Command;
 
 /**
  * Created by kprakobk on 4/30/15.
