@@ -5,11 +5,7 @@ import com.twu.biblioteca.commands.Command;
 import java.io.PrintStream;
 import java.util.Map;
 
-/**
- * Created by nzeplowi on 4/29/15.
- */
 public class Menu {
-
     private final PrintStream printStream;
     private final Biblioteca biblioteca;
     private  boolean running;
@@ -34,7 +30,7 @@ public class Menu {
         while (running) {
             displayMenu();
             String userInput = userInputStream.getUserInput();
-            checkUserInput(userInput);
+            executeCommand(userInput);
         }
         printStream.println("Thank you");
     }
@@ -47,8 +43,7 @@ public class Menu {
         printStream.println("Quit\n");
     }
 
-    private void checkUserInput(String userInput) {
-
+    private void executeCommand(String userInput) {
         if (mapMenuCommand.containsKey(userInput)){
             mapMenuCommand.get(userInput).execute();
         }
@@ -56,7 +51,7 @@ public class Menu {
             running = false;
         }
         else{
-                printStream.println("Select a valid option!");
+            printStream.println("Select a valid option!");
         }
     }
 }

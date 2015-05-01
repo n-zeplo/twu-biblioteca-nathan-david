@@ -4,9 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-/**
- * Created by nzeplowi on 4/29/15.
- */
 public class UserInputStream {
     public String getUserInput() {
         String inputLine = null;
@@ -19,11 +16,4 @@ public class UserInputStream {
         }
         return inputLine;
     }
-
-//    public Integer getNumberFromUser() {
-//        Integer userNumber;
-//
-//        userNumber = Integer.parseInt(getUserInput());
-//
-//    }
 }
