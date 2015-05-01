@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.commands.CheckInBookCommand;
 import com.twu.biblioteca.commands.CheckOutBookCommand;
 import com.twu.biblioteca.commands.Command;
 import com.twu.biblioteca.commands.ListBooksCommand;
@@ -12,7 +13,7 @@ import java.util.Map;
 public class Main {
 
     public static void main(String[] args) {
-        Biblioteca biblioteca = new Biblioteca(System.out, books(), new UserInputStream());
+        Biblioteca biblioteca = new Biblioteca(System.out, books(), new ArrayList<Book>(), new UserInputStream());
         Menu menu = new Menu(System.out, biblioteca, new UserInputStream(), initializeMapMenu(biblioteca));
 
         menu.start();
@@ -21,7 +22,8 @@ public class Main {
     private static Map<String, Command> initializeMapMenu(Biblioteca biblioteca) {
         Map<String, Command> mapMenuCommand = new HashMap<String, Command>();
         mapMenuCommand.put("List Books", new ListBooksCommand(biblioteca));
-        mapMenuCommand.put("Checkout Book", new CheckOutBookCommand(biblioteca));
+        mapMenuCommand.put("Check Out Book", new CheckOutBookCommand(biblioteca));
+        mapMenuCommand.put("Check In Book", new CheckInBookCommand(biblioteca));
 
         return mapMenuCommand;
     }

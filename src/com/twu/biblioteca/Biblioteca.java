@@ -9,67 +9,59 @@ import java.util.List;
  */
 public class Biblioteca {
     private PrintStream printStream;
-    private List<Book> bookList;
+    private List<Book> availableBooks;
     private UserInputStream userInputStream;
-    private List<Book> checkedOutBooks = new ArrayList<Book>();
+    private List<Book> unavailableBooks;
 
-    public Biblioteca(PrintStream printStream, List<Book> books, UserInputStream userInputStream) {
+    public Biblioteca(PrintStream printStream, List<Book> books, List<Book> unavailableBooks, UserInputStream userInputStream) {
         this.printStream = printStream;
-        this.bookList = books;
+        this.availableBooks = books;
+        this.unavailableBooks = unavailableBooks;
         this.userInputStream = userInputStream;
     }
 
     public void listBooks() {
         int counter = 1;
-        for (Book book : bookList) {
+        for (Book book : availableBooks) {
             this.printStream.println(counter + ". " + book);
             counter++;
         }
     }
 
     public void checkoutBook() {
-        printStream.println("Input the book you would like to checkout:");
-        String bookNumber = userInputStream.getUserInput();
+        String bookNumber = getBookNumberFromUser("Input the book you would like to checkout:");
 
-        if (validBookForCheckout(bookNumber)) {
-            moveBookToCheckedOutList(Integer.parseInt(bookNumber));
+        if (isValidInputForList(bookNumber, availableBooks)) {
+            moveBookBetweenLists(Integer.parseInt(bookNumber), availableBooks, unavailableBooks);
             printStream.println("Thank you! Enjoy the book");
         } else {
             printStream.println("That book is not available.");
         }
     }
 
-    private void moveBookToCheckedOutList(Integer bookNumber) {
-        Book checkedOutBook = bookList.remove(bookNumber - 1);
-        checkedOutBooks.add(checkedOutBook);
-    }
-
-    private boolean validBookForCheckout(String bookNumber) {
-        return bookNumber.matches("^[1-9]+") && bookList.size() >= Integer.parseInt(bookNumber);
-    }
-
     public void checkInBook() {
-        //List CheckedOutBooks();
-        printStream.println("Input the book you would like to return:");
-        String bookNumber = userInputStream.getUserInput();
+        String bookNumber = getBookNumberFromUser("Input the book you would like to return:");
 
-        if (validBookForCheckIn(bookNumber)) {
-            moveBookToBookList(Integer.parseInt(bookNumber));
+        if (isValidInputForList(bookNumber, unavailableBooks)) {
+            moveBookBetweenLists(Integer.parseInt(bookNumber), unavailableBooks, availableBooks);
             printStream.println("Thank you for returning the book.");
         } else {
-            printStream.println("That book is not available.");
+            //  printStream.println("That book is not available.");
         }
     }
 
-    private boolean validBookForCheckIn(String bookNumber) {
-        return bookNumber.matches("^[1-9]+") && checkedOutBooks.size() >= Integer.parseInt(bookNumber);
+    private boolean isValidInputForList(String bookNumber, List<Book> list) {
+        return bookNumber.matches("^[1-9]+") && list.size() >= Integer.parseInt(bookNumber);
     }
 
+    private String getBookNumberFromUser(String prompt) {
+        printStream.println(prompt);
+        return userInputStream.getUserInput();
+    }
 
-    private void moveBookToBookList(int bookNumber) {
-        Book returningBook;
-        returningBook = checkedOutBooks.remove(bookNumber - 1);
-        bookList.add(returningBook);
+    private void moveBookBetweenLists(int bookNumber, List<Book> source, List<Book> destination) {
+        Book returningBook = source.remove(bookNumber - 1);
+        destination.add(returningBook);
     }
 }
 

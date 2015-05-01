@@ -77,15 +77,6 @@ public class MenuTest {
     }
 
     @Test
-    public void shouldContainAnOrderedListOfOptions() {
-        when(userInputStream.getUserInput()).thenReturn("Quit");
-
-        menu.start();
-
-        verify(printStream).println(contains("1."));
-    }
-
-    @Test
     public void shouldWarnUserWhenProvidedInvalidOption() {
         when(userInputStream.getUserInput()).thenReturn("Invalid Input!!", "Quit");
 

@@ -6,6 +6,7 @@ import org.junit.Test;
 import java.io.PrintStream;
 import java.util.ArrayList;
 
+import static junit.framework.TestCase.assertTrue;
 import static org.hamcrest.CoreMatchers.allOf;
 import static org.mockito.Mockito.*;
 
@@ -20,6 +21,7 @@ public class BibliotecaTest {
     private ArrayList<Book> books;
     private Book book1;
     private UserInputStream userInputStream;
+    private ArrayList<Book> unavailableBooks;
 
     @Before
     public void setUp() {
@@ -28,7 +30,9 @@ public class BibliotecaTest {
         book1 = new Book("Title", "Author", "Year");
         books = new ArrayList<Book>();
         books.add(book1);
-        biblioteca = new Biblioteca(printStream, books, userInputStream);
+        unavailableBooks = new ArrayList<Book>();
+        unavailableBooks.add(book1);
+        biblioteca = new Biblioteca(printStream, books, unavailableBooks, userInputStream);
     }
 
     @Test
@@ -93,12 +97,11 @@ public class BibliotecaTest {
 
     @Test
     public void shouldHaveBookAfterCheckIn() {
-        when(userInputStream.getUserInput()).thenReturn("1").thenReturn("1");
+        when(userInputStream.getUserInput()).thenReturn("1");
 
-        biblioteca.checkoutBook();
         biblioteca.checkInBook();
-        biblioteca.listBooks();
 
-        verify(printStream).println(contains("Title"));
+        assertTrue(unavailableBooks.isEmpty());
     }
+
 }

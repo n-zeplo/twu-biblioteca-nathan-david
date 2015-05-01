@@ -30,9 +30,9 @@ public class Menu {
 
     public void start() {
         displayWelcomeMessage();
-        displayMenu();
 
         while (running) {
+            displayMenu();
             String userInput = userInputStream.getUserInput();
             checkUserInput(userInput);
         }
@@ -40,12 +40,11 @@ public class Menu {
     }
 
     private void displayMenu() {
-        int counter = 1;
+        printStream.println();
         for (String option : mapMenuCommand.keySet()) {
-            printStream.println(counter + ". " + option);
-            counter++;
+            printStream.println(option);
         }
-        printStream.println(counter + ". Quit\n" );
+        printStream.println("Quit\n");
     }
 
     private void checkUserInput(String userInput) {
