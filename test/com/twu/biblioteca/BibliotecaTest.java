@@ -61,7 +61,7 @@ public class BibliotecaTest {
 
         biblioteca.checkoutBook();
 
-        verify(printStream).println("Input the book do you would like to checkout?");
+        verify(printStream).println("Input the book you would like to checkout:");
     }
 
     @Test

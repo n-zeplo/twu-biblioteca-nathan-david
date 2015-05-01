@@ -31,14 +31,17 @@ public class Biblioteca {
     }
 
     public void checkoutBook() {
-        printStream.println("Input the book do you would like to checkout?");
+        printStream.println("Input the book you would like to checkout:");
         String bookNumber = userInputStream.getUserInput();
 
-        if (bookNumber.matches("^[1-9]+")) {
+        if (bookNumber.matches("^[1-9]+") && bookList.size() >= Integer.parseInt(bookNumber)) {
             Book checkedOutBook = bookList.remove(Integer.parseInt(bookNumber) - 1);
             checkedOutBooks.add(checkedOutBook);
             printStream.println("Thank you! Enjoy the book");
-        };
+        } else {
+            printStream.println("That book is not available.");
+        }
+            ;
     }
 }
 
