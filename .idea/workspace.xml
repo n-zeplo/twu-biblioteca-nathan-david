@@ -2,26 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3fc72a9f-e257-4638-985e-0a524239d21e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/twu/biblioteca/commands/CheckOutBookCommand.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/com/twu/biblioteca/CheckOutBookCommandTest.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/twu/biblioteca/QuitBibliotecaCommand.java" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/twu/biblioteca/Command.java" afterPath="$PROJECT_DIR$/src/com/twu/biblioteca/commands/Command.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/twu/biblioteca/ListBooksCommand.java" afterPath="$PROJECT_DIR$/src/com/twu/biblioteca/commands/ListBooksCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/biblioteca/com/twu/biblioteca/Biblioteca.class" afterPath="$PROJECT_DIR$/out/production/biblioteca/com/twu/biblioteca/Biblioteca.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/test/biblioteca/com/twu/biblioteca/BibliotecaTest.class" afterPath="$PROJECT_DIR$/out/test/biblioteca/com/twu/biblioteca/BibliotecaTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/biblioteca/com/twu/biblioteca/Book.class" afterPath="$PROJECT_DIR$/out/production/biblioteca/com/twu/biblioteca/Book.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/test/biblioteca/com/twu/biblioteca/BookTest.class" afterPath="$PROJECT_DIR$/out/test/biblioteca/com/twu/biblioteca/BookTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/biblioteca/com/twu/biblioteca/Main.class" afterPath="$PROJECT_DIR$/out/production/biblioteca/com/twu/biblioteca/Main.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/biblioteca/com/twu/biblioteca/Menu.class" afterPath="$PROJECT_DIR$/out/production/biblioteca/com/twu/biblioteca/Menu.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/test/biblioteca/com/twu/biblioteca/MenuTest.class" afterPath="$PROJECT_DIR$/out/test/biblioteca/com/twu/biblioteca/MenuTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/twu/biblioteca/Biblioteca.java" afterPath="$PROJECT_DIR$/src/com/twu/biblioteca/Biblioteca.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/com/twu/biblioteca/BibliotecaTest.java" afterPath="$PROJECT_DIR$/test/com/twu/biblioteca/BibliotecaTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/twu/biblioteca/Book.java" afterPath="$PROJECT_DIR$/src/com/twu/biblioteca/Book.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/com/twu/biblioteca/BookTest.java" afterPath="$PROJECT_DIR$/test/com/twu/biblioteca/BookTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/com/twu/biblioteca/ListBooksCommandTest.java" afterPath="$PROJECT_DIR$/test/com/twu/biblioteca/ListBooksCommandTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/twu/biblioteca/Main.java" afterPath="$PROJECT_DIR$/src/com/twu/biblioteca/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/twu/biblioteca/Menu.java" afterPath="$PROJECT_DIR$/src/com/twu/biblioteca/Menu.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/com/twu/biblioteca/MenuTest.java" afterPath="$PROJECT_DIR$/test/com/twu/biblioteca/MenuTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="biblioteca.iws" />
@@ -121,8 +101,8 @@
       <file leaf-file-name="BibliotecaTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/com/twu/biblioteca/BibliotecaTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7014563">
-              <caret line="90" column="0" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.6924829">
+              <caret line="91" column="77" selection-start-line="91" selection-start-column="77" selection-end-line="91" selection-end-column="77" />
               <folding />
             </state>
           </provider>
@@ -818,7 +798,7 @@
       <workItem from="1430246066737" duration="24384000" />
       <workItem from="1430334390219" duration="7532000" />
       <workItem from="1430406998810" duration="4110000" />
-      <workItem from="1430488889969" duration="8941000" />
+      <workItem from="1430488889969" duration="9017000" />
     </task>
     <task id="LOCAL-00001" summary="Create application class.&#10;Move startUserInterface method to the application class.&#10;Refactor biblioteca to have displayWelcomeMessage.&#10;">
       <created>1430317294391</created>
@@ -892,11 +872,17 @@
       <option name="project" value="LOCAL" />
       <updated>1430495496997</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Add Success Message On Successful Checkout">
+      <created>1430498289521</created>
+      <option name="number" value="00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1430498289521</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45381000" />
+    <option name="totallyTimeSpent" value="45457000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1434" height="829" extended-state="0" />
@@ -920,7 +906,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1961207" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.36635005" sideWeight="0.4902371" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.36635005" sideWeight="0.4902371" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -980,7 +966,8 @@
     <MESSAGE value="Rename application#startUserInterface to start" />
     <MESSAGE value="add map for user options" />
     <MESSAGE value="Refactor everything..." />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor everything..." />
+    <MESSAGE value="Add Success Message On Successful Checkout" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Success Message On Successful Checkout" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1318,8 +1305,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/com/twu/biblioteca/BibliotecaTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7014563">
-          <caret line="90" column="0" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.6924829">
+          <caret line="91" column="77" selection-start-line="91" selection-start-column="77" selection-end-line="91" selection-end-column="77" />
           <folding />
         </state>
       </provider>
