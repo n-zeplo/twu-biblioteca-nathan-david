@@ -7,7 +7,6 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 
 import static org.hamcrest.CoreMatchers.allOf;
-import static org.hamcrest.CoreMatchers.containsString;
 import static org.mockito.Mockito.*;
 
 
@@ -90,5 +89,16 @@ public class BibliotecaTest {
         biblioteca.checkoutBook();
 
         verify(printStream).println(contains("That book is not available."));
+    }
+
+    @Test
+    public void shouldHaveBookAfterCheckIn() {
+        when(userInputStream.getUserInput()).thenReturn("1").thenReturn("1");
+
+        biblioteca.checkoutBook();
+        biblioteca.checkInBook();
+        biblioteca.listBooks();
+
+        verify(printStream).println(contains("Title"));
     }
 }

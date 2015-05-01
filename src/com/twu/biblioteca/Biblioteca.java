@@ -47,5 +47,29 @@ public class Biblioteca {
     private boolean validBookForCheckout(String bookNumber) {
         return bookNumber.matches("^[1-9]+") && bookList.size() >= Integer.parseInt(bookNumber);
     }
+
+    public void checkInBook() {
+        //List CheckedOutBooks();
+        printStream.println("Input the book you would like to return:");
+        String bookNumber = userInputStream.getUserInput();
+
+        if (validBookForCheckIn(bookNumber)) {
+            moveBookToBookList(Integer.parseInt(bookNumber));
+            printStream.println("Thank you for returning the book.");
+        } else {
+            printStream.println("That book is not available.");
+        }
+    }
+
+    private boolean validBookForCheckIn(String bookNumber) {
+        return bookNumber.matches("^[1-9]+") && checkedOutBooks.size() >= Integer.parseInt(bookNumber);
+    }
+
+
+    private void moveBookToBookList(int bookNumber) {
+        Book returningBook;
+        returningBook = checkedOutBooks.remove(bookNumber - 1);
+        bookList.add(returningBook);
+    }
 }
 
