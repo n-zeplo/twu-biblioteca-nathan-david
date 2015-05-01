@@ -1,9 +1,6 @@
 package com.twu.biblioteca;
 
-import org.mockito.internal.util.collections.ArrayUtils;
-
 import java.io.PrintStream;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,14 +31,21 @@ public class Biblioteca {
         printStream.println("Input the book you would like to checkout:");
         String bookNumber = userInputStream.getUserInput();
 
-        if (bookNumber.matches("^[1-9]+") && bookList.size() >= Integer.parseInt(bookNumber)) {
-            Book checkedOutBook = bookList.remove(Integer.parseInt(bookNumber) - 1);
-            checkedOutBooks.add(checkedOutBook);
+        if (validBookForCheckout(bookNumber)) {
+            moveBookToCheckedOutList(Integer.parseInt(bookNumber));
             printStream.println("Thank you! Enjoy the book");
         } else {
             printStream.println("That book is not available.");
         }
-            ;
+    }
+
+    private void moveBookToCheckedOutList(Integer bookNumber) {
+        Book checkedOutBook = bookList.remove(bookNumber - 1);
+        checkedOutBooks.add(checkedOutBook);
+    }
+
+    private boolean validBookForCheckout(String bookNumber) {
+        return bookNumber.matches("^[1-9]+") && bookList.size() >= Integer.parseInt(bookNumber);
     }
 }
 

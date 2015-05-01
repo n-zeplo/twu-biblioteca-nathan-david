@@ -19,4 +19,11 @@ public class UserInputStream {
         }
         return inputLine;
     }
+
+//    public Integer getNumberFromUser() {
+//        Integer userNumber;
+//
+//        userNumber = Integer.parseInt(getUserInput());
+//
+//    }
 }
