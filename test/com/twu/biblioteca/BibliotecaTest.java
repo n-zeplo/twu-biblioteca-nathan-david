@@ -104,4 +104,21 @@ public class BibliotecaTest {
         assertTrue(unavailableBooks.isEmpty());
     }
 
+    @Test
+    public void shouldDisplaySuccessMessageOnSuccessfulCheckIn() {
+        when(userInputStream.getUserInput()).thenReturn("1");
+
+        biblioteca.checkInBook();
+
+        verify(printStream).println(contains("Thank you for returning the book."));
+    }
+
+    @Test
+    public void shouldDisplayUnsuccessfulMessageOnUnsuccessfulCheckIn() {
+        when(userInputStream.getUserInput()).thenReturn("Invalid Book Number");
+
+        biblioteca.checkInBook();
+
+        verify(printStream).println(contains("That is not a valid book to return."));
+    }
 }

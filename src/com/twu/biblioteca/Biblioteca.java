@@ -46,7 +46,7 @@ public class Biblioteca {
             moveBookBetweenLists(Integer.parseInt(bookNumber), unavailableBooks, availableBooks);
             printStream.println("Thank you for returning the book.");
         } else {
-            //  printStream.println("That book is not available.");
+            printStream.println("That is not a valid book to return.");
         }
     }
 
