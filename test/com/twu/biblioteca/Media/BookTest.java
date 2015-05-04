@@ -1,4 +1,4 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.Media;
 
 import com.twu.biblioteca.Media.Book;
 import com.twu.biblioteca.Media.Media;
@@ -17,13 +17,13 @@ public class BookTest {
     public void toStringShouldPrintTitleAuthorAndYearPublished() {
         Media book = new Book("Title", "Author", "Year");
 
-        assertThat(book.toString(), allOf(containsString("Title"), containsString("Author"), containsString("Year")));
+        assertThat(book.getInformation(), allOf(containsString("Title"), containsString("Author"), containsString("Year")));
     }
 
     @Test
     public void toStringShouldFormatOutputToUseColumns() {
         Media book = new Book("Title", "Author", "Year");
 
-        assertEquals(book.toString(), "Title                                             |Author              |Year");
+        assertEquals(book.getInformation(), "Title                                             |Author              |Year");
     }
 }

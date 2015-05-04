@@ -15,7 +15,7 @@ public class Book implements Media {
     }
 
     @Override
-    public String toString() {
+    public String getInformation() {
         return String.format("%-50s|%-20s|%-4s", title, author, year);
     }
 }

@@ -20,8 +20,8 @@ public class Biblioteca {
     }
     private void list(List<Media> mediaList){
         int counter = 1;
-        for (Media book : mediaList) {
-            this.printStream.println(counter + ". " + book);
+        for (Media medium : mediaList) {
+            printStream.println(counter + ". " + medium.getInformation());
             counter++;
         }
     }
@@ -31,25 +31,33 @@ public class Biblioteca {
 
 
     public void checkoutBook() {
-        String bookNumber = getBookNumberFromUser("Input the book you would like to checkout:");
+        checkout(availableBooks, unavailableBooks, "book");
+    }
 
-        if (isValidBookNumberForList(bookNumber, availableBooks)) {
-            moveBookBetweenLists(Integer.parseInt(bookNumber), availableBooks, unavailableBooks);
-            printStream.println("Thank you! Enjoy the book");
+    private void checkout(List<Media> availableMedia, List<Media> unavailableMedia, String mediaType) {
+        String bookNumber = getBookNumberFromUser("Input the " + mediaType + " you would like to checkout:");
+
+        if (isValidBookNumberForList(bookNumber, availableMedia)) {
+            moveBookBetweenLists(Integer.parseInt(bookNumber), availableMedia, unavailableMedia);
+            printStream.println("Thank you! Enjoy the " + mediaType);
         } else {
-            printStream.println("That book is not available.");
+            printStream.println("That " + mediaType + " is not available.");
         }
     }
 
     public void checkInBook() {
-        list(unavailableBooks);
-        String bookNumber = getBookNumberFromUser("Input the book you would like to return:");
+        checkIn(unavailableBooks, availableBooks, "book");
+    }
 
-        if (isValidBookNumberForList(bookNumber, unavailableBooks)) {
-            moveBookBetweenLists(Integer.parseInt(bookNumber), unavailableBooks, availableBooks);
-            printStream.println("Thank you for returning the book.");
+    private void checkIn(List<Media> unavailableMedia, List<Media> availableMedia, String mediaType) {
+        list(unavailableMedia);
+        String bookNumber = getBookNumberFromUser("Input the " + mediaType + " you would like to return:");
+
+        if (isValidBookNumberForList(bookNumber, unavailableMedia)) {
+            moveBookBetweenLists(Integer.parseInt(bookNumber), unavailableMedia, availableMedia);
+            printStream.println("Thank you for returning the " + mediaType + ".");
         } else {
-            printStream.println("That is not a valid book to return.");
+            printStream.println("That is not a valid " + mediaType + " to return.");
         }
     }
 

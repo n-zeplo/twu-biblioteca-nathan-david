@@ -46,7 +46,7 @@ public class BibliotecaTest {
     @Test
     public void shouldPrintBookObjectsFromListBooks(){
         String stubbedResponse = "Test Media";
-        when(media.toString()).thenReturn(stubbedResponse);
+        when(media.getInformation()).thenReturn(stubbedResponse);
         biblioteca.listAvailableBooks();
 
         verify(printStream).println(contains(stubbedResponse));
