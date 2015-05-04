@@ -1,7 +1,6 @@
 package com.twu.biblioteca.commands;
 
 import com.twu.biblioteca.Biblioteca;
-import com.twu.biblioteca.commands.ListBooksCommand;
 import org.junit.Test;
 
 import static org.mockito.Mockito.mock;
@@ -19,7 +18,7 @@ public class ListBooksCommandTest {
 
         listBooksCommand.execute();
 
-        verify(biblioteca).listBooks();
+        verify(biblioteca).listAvailableBooks();
     }
 
 

@@ -37,14 +37,14 @@ public class BibliotecaTest {
 
     @Test
     public void shouldPrintEachBook() {
-        biblioteca.listBooks();
+        biblioteca.listAvailableBooks();
 
         verify(printStream, times(books.size())).println(anyString());
     }
 
     @Test
     public void shouldPrintBookObjectsFromListBooks(){
-        biblioteca.listBooks();
+        biblioteca.listAvailableBooks();
 
         verify(printStream).println(contains(book1.toString()));
     }
@@ -72,7 +72,7 @@ public class BibliotecaTest {
         when(userInputStream.getUserInput()).thenReturn("1");
 
         biblioteca.checkoutBook();
-        biblioteca.listBooks();
+        biblioteca.listAvailableBooks();
 
         verify(printStream, never()).println(contains("Title"));
     }

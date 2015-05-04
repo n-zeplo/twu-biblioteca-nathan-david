@@ -16,14 +16,17 @@ public class Biblioteca {
         this.unavailableBooks = unavailableBooks;
         this.userInputStream = userInputStream;
     }
-
-    public void listBooks() {
+    private void list(List<Book> bookList){
         int counter = 1;
-        for (Book book : availableBooks) {
+        for (Book book : bookList) {
             this.printStream.println(counter + ". " + book);
             counter++;
         }
     }
+    public void listAvailableBooks() {
+        list(availableBooks);
+    }
+
 
     public void checkoutBook() {
         String bookNumber = getBookNumberFromUser("Input the book you would like to checkout:");
@@ -37,6 +40,7 @@ public class Biblioteca {
     }
 
     public void checkInBook() {
+        list(unavailableBooks);
         String bookNumber = getBookNumberFromUser("Input the book you would like to return:");
 
         if (isValidBookNumberForList(bookNumber, unavailableBooks)) {
