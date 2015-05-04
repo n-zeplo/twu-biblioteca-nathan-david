@@ -23,6 +23,7 @@ public class BibliotecaTest {
     private Media media;
     private UserInputStream userInputStream;
     private ArrayList<Media> unavailableBooks;
+    private ArrayList<Media> movies;
 
     @Before
     public void setUp() {
@@ -31,9 +32,12 @@ public class BibliotecaTest {
         media = mock(Media.class);
         books = new ArrayList<Media>();
         books.add(media);
+        movies = new ArrayList<Media>();
+        movies.add(media);
+
         unavailableBooks = new ArrayList<Media>();
         unavailableBooks.add(media);
-        biblioteca = new Biblioteca(printStream, books, unavailableBooks, userInputStream);
+        biblioteca = new Biblioteca(printStream, books, unavailableBooks, movies, userInputStream);
     }
 
     @Test
@@ -45,11 +49,9 @@ public class BibliotecaTest {
 
     @Test
     public void shouldPrintBookObjectsFromListBooks(){
-        String stubbedResponse = "Test Media";
-        when(media.getInformation()).thenReturn(stubbedResponse);
         biblioteca.listAvailableBooks();
 
-        verify(printStream).println(contains(stubbedResponse));
+        verify(media).getInformation();
     }
 
     @Test
@@ -123,5 +125,12 @@ public class BibliotecaTest {
         biblioteca.checkInBook();
 
         verify(printStream).println(contains("That is not a valid book to return."));
+    }
+
+    @Test
+    public void shouldListMovies() {
+        biblioteca.listMovies();
+
+        verify(media).getInformation();
     }
 }

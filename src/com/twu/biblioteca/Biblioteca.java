@@ -10,12 +10,14 @@ public class Biblioteca {
     private PrintStream printStream;
     private List<Media> availableBooks;
     private List<Media> unavailableBooks;
+    private List<Media> availableMovies;
     private UserInputStream userInputStream;
 
-    public Biblioteca(PrintStream printStream, List<Media> books, List<Media> unavailableBooks, UserInputStream userInputStream) {
+    public Biblioteca(PrintStream printStream, List<Media> books, List<Media> unavailableBooks, List<Media> availableMovies, UserInputStream userInputStream) {
         this.printStream = printStream;
         this.availableBooks = books;
         this.unavailableBooks = unavailableBooks;
+        this.availableMovies = availableMovies;
         this.userInputStream = userInputStream;
     }
     private void list(List<Media> mediaList){
@@ -76,6 +78,7 @@ public class Biblioteca {
     }
 
     public void listMovies() {
+        list(availableMovies);
     }
 }
 

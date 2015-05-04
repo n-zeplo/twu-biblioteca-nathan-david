@@ -15,7 +15,8 @@ import java.util.Map;
 public class Main {
 
     public static void main(String[] args) {
-        Biblioteca biblioteca = new Biblioteca(System.out, books(), new ArrayList<Media>(), new UserInputStream());
+        List<Media> availableMovies = new ArrayList<Media>();
+        Biblioteca biblioteca = new Biblioteca(System.out, books(), new ArrayList<Media>(), availableMovies, new UserInputStream());
         Menu menu = new Menu(System.out, biblioteca, new UserInputStream(), initializeMapMenu(biblioteca));
 
         menu.start();
