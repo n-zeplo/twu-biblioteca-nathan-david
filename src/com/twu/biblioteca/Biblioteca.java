@@ -31,11 +31,11 @@ public class Biblioteca {
 
 
     public void checkoutBook() {
-        checkout(availableBooks, unavailableBooks, "book");
+        checkOut(availableBooks, unavailableBooks, "book");
     }
 
-    private void checkout(List<Media> availableMedia, List<Media> unavailableMedia, String mediaType) {
-        String bookNumber = getBookNumberFromUser("Input the " + mediaType + " you would like to checkout:");
+    private void checkOut(List<Media> availableMedia, List<Media> unavailableMedia, String mediaType) {
+        String bookNumber = getBookNumberFromUser("Input the " + mediaType + " you would like to check out:");
 
         if (isValidBookNumberForList(bookNumber, availableMedia)) {
             moveBookBetweenLists(Integer.parseInt(bookNumber), availableMedia, unavailableMedia);
