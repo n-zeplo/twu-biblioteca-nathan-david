@@ -1,7 +1,9 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.Media;
 
 
-public class Book {
+import com.twu.biblioteca.Media.Media;
+
+public class Book implements Media {
     private String title;
     private String author;
     private String year;

@@ -1,24 +1,26 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.Media.Media;
+
 import java.io.PrintStream;
 import java.util.List;
 
 
 public class Biblioteca {
     private PrintStream printStream;
-    private List<Book> availableBooks;
-    private List<Book> unavailableBooks;
+    private List<Media> availableBooks;
+    private List<Media> unavailableBooks;
     private UserInputStream userInputStream;
 
-    public Biblioteca(PrintStream printStream, List<Book> books, List<Book> unavailableBooks, UserInputStream userInputStream) {
+    public Biblioteca(PrintStream printStream, List<Media> books, List<Media> unavailableBooks, UserInputStream userInputStream) {
         this.printStream = printStream;
         this.availableBooks = books;
         this.unavailableBooks = unavailableBooks;
         this.userInputStream = userInputStream;
     }
-    private void list(List<Book> bookList){
+    private void list(List<Media> mediaList){
         int counter = 1;
-        for (Book book : bookList) {
+        for (Media book : mediaList) {
             this.printStream.println(counter + ". " + book);
             counter++;
         }
@@ -51,7 +53,7 @@ public class Biblioteca {
         }
     }
 
-    private boolean isValidBookNumberForList(String bookNumber, List<Book> list) {
+    private boolean isValidBookNumberForList(String bookNumber, List<Media> list) {
         return bookNumber.matches("^[1-9]+") && list.size() >= Integer.parseInt(bookNumber);
     }
 
@@ -60,8 +62,8 @@ public class Biblioteca {
         return userInputStream.getUserInput();
     }
 
-    private void moveBookBetweenLists(int bookNumber, List<Book> source, List<Book> destination) {
-        Book bookToMove = source.remove(bookNumber - 1);
+    private void moveBookBetweenLists(int bookNumber, List<Media> source, List<Media> destination) {
+        Media bookToMove = source.remove(bookNumber - 1);
         destination.add(bookToMove);
     }
 }

@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.Media.Media;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -18,20 +19,20 @@ public class BibliotecaTest {
 
     private PrintStream printStream;
     private Biblioteca biblioteca;
-    private ArrayList<Book> books;
-    private Book book1;
+    private ArrayList<Media> books;
+    private Media media;
     private UserInputStream userInputStream;
-    private ArrayList<Book> unavailableBooks;
+    private ArrayList<Media> unavailableBooks;
 
     @Before
     public void setUp() {
         userInputStream = mock(UserInputStream.class);
         printStream = mock(PrintStream.class);
-        book1 = new Book("Title", "Author", "Year");
-        books = new ArrayList<Book>();
-        books.add(book1);
-        unavailableBooks = new ArrayList<Book>();
-        unavailableBooks.add(book1);
+        media = mock(Media.class);
+        books = new ArrayList<Media>();
+        books.add(media);
+        unavailableBooks = new ArrayList<Media>();
+        unavailableBooks.add(media);
         biblioteca = new Biblioteca(printStream, books, unavailableBooks, userInputStream);
     }
 
@@ -44,9 +45,11 @@ public class BibliotecaTest {
 
     @Test
     public void shouldPrintBookObjectsFromListBooks(){
+        String stubbedResponse = "Test Media";
+        when(media.toString()).thenReturn(stubbedResponse);
         biblioteca.listAvailableBooks();
 
-        verify(printStream).println(contains(book1.toString()));
+        verify(printStream).println(contains(stubbedResponse));
     }
 
     @Test
