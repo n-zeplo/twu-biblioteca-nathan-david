@@ -19,6 +19,6 @@ public class Movie implements Media {
 
     @Override
     public String getInformation() {
-        return String.format("%-50s|%-4s|%-20s|%-7s", name, year, director, rating);
+        return String.format("%-25s|%-5s|%-20s|%-7s", name, year, director, rating);
     }
 }
